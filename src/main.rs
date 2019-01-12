@@ -1,6 +1,6 @@
 use fart::svg::{self, node::element};
 
-fn gen(config: &mut fart::Config, document: svg::Document) -> fart::Result<()> {
+fn gen(config: &mut fart::Config, document: svg::Document) -> fart::Result<svg::Document> {
     let data = element::Data::new()
         .move_to((10, 10))
         .line_by((0, 50))
