@@ -1,20 +1,20 @@
 use fart::svg::{self, node::element};
 
-fn gen(config: &mut fart::Config, document: svg::Document) -> fart::Result<svg::Document> {
-    let data = element::Data::new()
-        .move_to((10, 10))
-        .line_by((0, 50))
-        .line_by((50, 0))
-        .line_by((0, -50))
+fn gen(cfg: &mut fart::Config, document: svg::Document) -> fart::Result<svg::Document> {
+    let data = element::path::Data::new()
+        .move_to((250, 250))
+        .line_by((0, 500))
+        .line_by((500, 0))
+        .line_by((0, -500))
         .close();
 
     let path = element::Path::new()
         .set("fill", "none")
         .set("stroke", "black")
-        .set("stroke-width", 3)
+        .set("stroke-width", 1)
         .set("d", data);
 
-    document.set("viewBox", (0, 0, 70, 70)).add(path)
+    Ok(document.set("viewBox", (0, 0, 1000, 1000)).add(path))
 }
 
 fn main() {
