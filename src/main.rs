@@ -8,13 +8,13 @@ fn main() {
         let y_dist = Uniform::new(0, 1000);
         let rng = &mut fart::rng();
 
-        let triangle = fart::geom::Polygon::new(vec![
+        let mut triangle = || fart::geom::Polygon::new(vec![
             point2(x_dist.sample(rng), y_dist.sample(rng)),
             point2(x_dist.sample(rng), y_dist.sample(rng)),
             point2(x_dist.sample(rng), y_dist.sample(rng)),
         ]);
 
-        canvas.draw(&triangle);
+        canvas.draw(&triangle());
 
         Ok(canvas.create_svg(Inches(7.0), Inches(7.0)))
     });
