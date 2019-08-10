@@ -4,5 +4,3 @@
 #
 #    $ source user_consts.sh
 
-export FART_USER_CONST_TRIS=60
-export FART_USER_CONST_RNG_SEED=1337
