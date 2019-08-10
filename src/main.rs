@@ -8,15 +8,25 @@ fn main() {
         let y_dist = Uniform::new(0, 1000);
         let rng = &mut fart::rng();
 
-        let mut triangle = || fart::geom::Polygon::new(vec![
-            point2(x_dist.sample(rng), y_dist.sample(rng)),
-            point2(x_dist.sample(rng), y_dist.sample(rng)),
-            point2(x_dist.sample(rng), y_dist.sample(rng)),
-        ]);
+        let mut triangle = || {
+            let mut vs = vec![
+                point2(x_dist.sample(rng), y_dist.sample(rng)),
+                point2(x_dist.sample(rng), y_dist.sample(rng)),
+                point2(x_dist.sample(rng), y_dist.sample(rng)),
+            ];
+            if !fart::geom::is_counter_clockwise(&vs) {
+                vs.reverse();
+            }
+            fart::geom::Polygon::new(vs)
+        };
 
-        canvas.draw(&triangle());
-        canvas.draw(&triangle());
-        canvas.draw(&triangle());
+        fart::user_const! {
+            const TRIS: usize = 5;
+        }
+
+        for _ in 0..*TRIS {
+            canvas.draw(&triangle());
+        }
 
         Ok(canvas.create_svg(Inches(7.0), Inches(7.0)))
     });
