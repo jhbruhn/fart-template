@@ -1,3 +1,4 @@
+use fart::geom::line;
 use fart::prelude::*;
 
 fn main() {
@@ -8,25 +9,14 @@ fn main() {
         let y_dist = Uniform::new(0, 1000);
         let rng = &mut fart::rng();
 
-        let mut triangle = || {
-            let mut vs = vec![
-                point2(x_dist.sample(rng), y_dist.sample(rng)),
-                point2(x_dist.sample(rng), y_dist.sample(rng)),
-                point2(x_dist.sample(rng), y_dist.sample(rng)),
-            ];
-            if !fart::geom::is_counter_clockwise(&vs) {
-                vs.reverse();
-            }
-            fart::geom::Polygon::new(vs)
-        };
+        let mut random_point = || point2::<_, CanvasSpace>(x_dist.sample(rng), y_dist.sample(rng));
 
-        fart::user_const! {
-            const TRIS: usize = 5;
-        }
+        let random_line = line(
+            point2(x_dist.sample(rng), y_dist.sample(rng)),
+            point2(x_dist.sample(rng), y_dist.sample(rng)),
+        );
 
-        for _ in 0..*TRIS {
-            canvas.draw(&triangle());
-        }
+        canvas.draw(&random_line);
 
         Ok(canvas.create_svg(Inches(7.0), Inches(7.0)))
     });
