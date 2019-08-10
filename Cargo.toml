@@ -5,4 +5,4 @@ authors = ["Nick Fitzgerald <fitzgen@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-fart = "0.3"
+fart = { path = "../fart" }
