@@ -9,12 +9,9 @@ fn main() {
         let y_dist = Uniform::new(0, 1000);
         let rng = &mut fart::rng();
 
-        let mut random_point = || point2::<_, CanvasSpace>(x_dist.sample(rng), y_dist.sample(rng));
+        let mut random_point = || point2(x_dist.sample(rng), y_dist.sample(rng));
 
-        let random_line = line(
-            point2(x_dist.sample(rng), y_dist.sample(rng)),
-            point2(x_dist.sample(rng), y_dist.sample(rng)),
-        );
+        let random_line = line(random_point(), random_point());
 
         canvas.draw(&random_line);
 
