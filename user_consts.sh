@@ -4,4 +4,4 @@
 #
 #    $ source user_consts.sh
 
-export FART_USER_CONST_TRIS=1
+export FART_USER_CONST_TRIS=5
