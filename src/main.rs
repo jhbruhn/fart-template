@@ -10,7 +10,6 @@ fn main() {
         let rng = &mut fart::rng();
 
         let mut random_point = || point2(x_dist.sample(rng), y_dist.sample(rng));
-
         let random_line = line(random_point(), random_point());
 
         canvas.draw(&random_line);
