@@ -16,6 +16,7 @@ fn main() {
 
         canvas.draw(&triangle());
         canvas.draw(&triangle());
+        canvas.draw(&triangle());
 
         Ok(canvas.create_svg(Inches(7.0), Inches(7.0)))
     });
