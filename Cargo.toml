@@ -1,7 +1,7 @@
 [package]
 name = "fart-template"
 version = "0.1.0"
-authors = ["Nick Fitzgerald <fitzgen@gmail.com>"]
+authors = ["Jan-Henrik Bruhn <hi@jhbruhn.de>"]
 edition = "2018"
 
 [dependencies]
